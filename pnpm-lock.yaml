@@ -2,16 +2,24 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/node': ^17.0.31
+  '@types/wav': ^1.0.1
   typescript: ^4.6.4
 
 devDependencies:
   '@types/node': 17.0.31
+  '@types/wav': 1.0.1
   typescript: 4.6.4
 
 packages:
 
   /@types/node/17.0.31:
     resolution: {integrity: sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==}
+    dev: true
+
+  /@types/wav/1.0.1:
+    resolution: {integrity: sha512-AKJeM5mqO1pdR2/HaTUQzSCm12No36KUM1larivXUmsLx+4JmMuC2Tv0kCdZzTx66h7IH2Xr92DGc9NQsXxa9Q==}
+    dependencies:
+      '@types/node': 17.0.31
     dev: true
 
   /typescript/4.6.4:

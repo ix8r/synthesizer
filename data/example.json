@@ -1,0 +1,49 @@
+{
+    "time": {
+        "bpm": 140,
+        "pattern": 16
+    },
+    "stems": [],
+    "instruments": {
+        "sine": {
+            "type": "synth",
+            "envelope": {
+                "attack": 0.1,
+                "decay": 0.2,
+                "sustain": 0.5,
+                "release": 0.3
+            },
+
+            "flavor": "osc",
+            "wave": "sine"
+        }
+    },
+    "patterns": {
+        "test": {
+            "instrument": "sine",
+            "notes": [
+                {
+                    "note": "C4",
+                    "start": 0,
+                    "length": 1
+                },
+                {
+                    "note": "C4",
+                    "start": 4,
+                    "length": 1
+                },
+                {
+                    "note": "C4",
+                    "start": 8,
+                    "length": 1
+                },
+                {
+                    "note": "C4",
+                    "start": 12,
+                    "length": 1
+                }
+            ]
+        }
+    },
+    "score": []
+}
