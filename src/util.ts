@@ -30,3 +30,15 @@ export function getPatternTime(
 
     return baseTime + getInstrumentTailTime(instrument)
 }
+
+export function clamp(x: number, min: number, max: number) {
+    return Math.min(max, Math.max(min, x))
+}
+
+export function unlerp(x: number, a: number, b: number) {
+    return (x - a) / (b - a)
+}
+
+export function lerp(x: number, a: number, b: number) {
+    return a + x * (b - a)
+}

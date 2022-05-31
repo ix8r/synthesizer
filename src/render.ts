@@ -1,9 +1,10 @@
+import { adsr } from "./synth"
 import { SynthesizerData, SynthesizerPattern, SynthesizerNote } from "./types"
 import { getBeatTime, getPatternTime } from "./util"
 
 export const sampleRate = 44100
 
-type SynthesizerRenderNote = {
+export type SynthesizerRenderNote = {
     frequency: number,
     start: number,
     end: number
@@ -27,14 +28,10 @@ export function renderPattern(pattern: SynthesizerPattern, data: SynthesizerData
 
     const notes = processNotes(pattern.notes, data)
 
+    const synthData = data.instruments[pattern.instrument]
+
     const synth = {
         note: (note: SynthesizerRenderNote, time: number) => {
-            if (time < note.start) {
-                return 0
-            } else if (time >= note.end) {
-                return 0
-            }
-
             return Math.sin((time - note.start) * note.frequency * 2 * Math.PI)
         }
     }
@@ -42,7 +39,7 @@ export function renderPattern(pattern: SynthesizerPattern, data: SynthesizerData
     for (let i = 0; i < length; i++) {
         const time = i / sampleRate
 
-        buffer[i] = notes.reduce((acc, note) => acc + synth.note(note, time), 0)
+        buffer[i] = notes.reduce((acc, note) => acc + synth.note(note, time) * adsr(synthData.envelope, note, time), 0)
     }
 
     return buffer
