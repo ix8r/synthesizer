@@ -1,4 +1,6 @@
+import { noteToFrequency } from "./notes"
 import { adsr } from "./synth"
+import { getSynth } from "./synths"
 import { SynthesizerData, SynthesizerPattern, SynthesizerNote } from "./types"
 import { getBeatTime, getPatternTime } from "./util"
 
@@ -15,7 +17,7 @@ function processNotes(notes: SynthesizerNote[], data: SynthesizerData): Synthesi
 
     return notes.map(note => {
         return {
-            frequency: 440,
+            frequency: noteToFrequency(note.note),
             start: note.start * beatTime,
             end: (note.start + note.length) * beatTime
         }
@@ -30,16 +32,12 @@ export function renderPattern(pattern: SynthesizerPattern, data: SynthesizerData
 
     const synthData = data.instruments[pattern.instrument]
 
-    const synth = {
-        note: (note: SynthesizerRenderNote, time: number) => {
-            return Math.sin((time - note.start) * note.frequency * 2 * Math.PI)
-        }
-    }
+    const synth = getSynth(synthData)
 
     for (let i = 0; i < length; i++) {
         const time = i / sampleRate
 
-        buffer[i] = notes.reduce((acc, note) => acc + synth.note(note, time) * adsr(synthData.envelope, note, time), 0)
+        buffer[i] = notes.reduce((acc, note) => acc + synth(synthData as any, note, time) * adsr(synthData.envelope, note, time), 0)
     }
 
     return buffer

@@ -28,17 +28,27 @@
                     "length": 1
                 },
                 {
-                    "note": "C4",
+                    "note": "E4",
                     "start": 4,
                     "length": 1
                 },
                 {
-                    "note": "C4",
+                    "note": "G4",
                     "start": 8,
                     "length": 1
                 },
                 {
                     "note": "C4",
+                    "start": 12,
+                    "length": 1
+                },
+                {
+                    "note": "E4",
+                    "start": 12,
+                    "length": 1
+                },
+                {
+                    "note": "G4",
                     "start": 12,
                     "length": 1
                 }
