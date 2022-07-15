@@ -13,6 +13,7 @@
                 "sustain": 0.5,
                 "release": 0.3
             },
+            "gain": 0.6,
 
             "flavor": "osc",
             "wave": "sine"

@@ -7,7 +7,10 @@ export type SynthesizerEnvelope = {
 
 export type SynthesizerInstrumentSynth = {
     type: "synth",
+
     envelope: SynthesizerEnvelope,
+    gain: number,
+
     flavor: string
 }
 

@@ -37,7 +37,7 @@ export function renderPattern(pattern: SynthesizerPattern, data: SynthesizerData
     for (let i = 0; i < length; i++) {
         const time = i / sampleRate
 
-        buffer[i] = notes.reduce((acc, note) => acc + synth(synthData as any, note, time) * adsr(synthData.envelope, note, time), 0)
+        buffer[i] = notes.reduce((acc, note) => acc + synth(synthData as any, note, time) * adsr(synthData.envelope, note, time), 0) * synthData.gain
     }
 
     return buffer
